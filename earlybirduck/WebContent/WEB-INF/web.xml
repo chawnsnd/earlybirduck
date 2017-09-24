@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+    	http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+   	version="3.1">
+
+    
+<!-- DB Driver 설정을 변경하고 싶으면 여길 건드리세요 -->
+<listener>
+    <listener-class>jdbc.DBCPInitListener</listener-class>
+</listener>
+
+<context-param>
+    <param-name>poolConfig</param-name>
+    <param-value>
+        jdbcdriver=com.mysql.jdbc.Driver
+        jdbcUrl=jdbc:mysql://localhost:3306/earlybirduck
+        dbUser=chawnsnd
+        dbPass=tw161379
+        validationQuery=select 1
+        minIdle=3
+        maxTotal=30
+        poolName=earlybirduck
+    </param-value>
+</context-param>
+<!-- DB Driver 설정을 변경하고 싶으면 여길 건드리세요 -->
+
+
+
+
+<!-- 앞으로 모든 요청파라미터는 이 필터를 거쳐 UTF8로 변환됩니다. -->
+<filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+        <param-name>encoding</param-name>
+        <param-value>utf-8</param-value>
+    </init-param>
+</filter>
+
+<filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+<!-- 앞으로 모든 요청파라미터는 이 필터를 거쳐 UTF8로 변환됩니다. -->
+
+<!-- MVC중 Controller입니다. 파라미터로 URI프로퍼티 파일을 사용합니다.-->
+<servlet>
+    <servlet-name>ControllerUsingURI</servlet-name>
+    <servlet-class>mvc.controller.ControllerUsingURI</servlet-class>
+    <init-param>
+        <param-name>configFile</param-name>
+        <param-value>
+            /WEB-INF/commandHandlerURI.properties
+        </param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+
+
+<servlet-mapping>
+    <servlet-name>ControllerUsingURI</servlet-name>
+    <url-pattern>*.do</url-pattern>
+</servlet-mapping>
+<!-- MVC중 Controller입니다. 파라미터로 URI프로퍼티 파일을 사용합니다.-->
+
+<!-- 로그인 체크 필터입니다 -->
+<filter>
+	<filter-name>LoginCheckFilter</filter-name>
+	<filter-class>filter.LoginCheckFilter</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>LoginCheckFilter</filter-name>
+	<url-pattern>/mission.do</url-pattern>
+</filter-mapping>
+<!-- 로그인 체크 필터입니다 -->
+</web-app>
