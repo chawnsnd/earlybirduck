@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="user-scalable=no, width=device-width"/>
 <title>가입</title>
 </head>
 <body>

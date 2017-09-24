@@ -3,8 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta name="viewport" content="user-scalable=no, width=device-width"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>미션 성공</title>
+<title>미션 실패</title>
 </head>
 <body>
 미션이 실패하였습니다! 다시 시도해주세요ㅠㅠ<br/><br/>

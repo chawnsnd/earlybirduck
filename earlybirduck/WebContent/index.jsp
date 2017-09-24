@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>얼리버DUCK</title>
+<meta name="viewport" content="user-scalable=no, width=device-width"/>
+<title>EARLYBIRDUCK</title>
 </head>
 <body>
-<h1>얼리버DUCK</h1>
+<h1>EARLYBIRDUCK</h1>
 
 <u:isLogin>
 	${authUser.name}님, 안녕하세요.

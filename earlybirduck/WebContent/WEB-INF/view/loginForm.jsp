@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="user-scalable=no, width=device-width"/>
 <title>로그인</title>
 </head>
 <body>
