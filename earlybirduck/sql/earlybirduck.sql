@@ -37,15 +37,20 @@ alter table member change password password varchar(20);
 alter table mission add constraint foreign key(memberid)
 references member(memberid) on delete cascade on update cascade;
 
-select * from mission;
+create table article (
+    article_no int auto_increment primary key,
+    writer_id varchar(50) not null,
+    writer_name varchar(50) not null,
+    title varchar(255) not null,
+    regdate datetime not null,
+    moddate datetime not null,
+    read_cnt int
+) engine=InnoDB default character set = utf8;
 
-delete from mission;
-
-update mission set firstmission = curtime() where memberid='chawnsnd' and year=2017 and month=9 and day=24;
-
-select year, month, day, week, firstmission, secondmission, thirdmission from mission where memberid='chawnsnd'
-
-
+create table article_content (
+    article_no int primary key,
+    content text
+) engine=InnoDB default character set = utf8;
 
 
 

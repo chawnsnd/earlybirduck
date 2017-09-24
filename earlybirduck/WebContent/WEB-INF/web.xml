@@ -73,6 +73,8 @@
 <filter-mapping>
 	<filter-name>LoginCheckFilter</filter-name>
 	<url-pattern>/mission.do</url-pattern>
+	<url-pattern>/article/write.do</url-pattern>
+	<url-pattern>/article/modify.do</url-pattern>
 </filter-mapping>
 <!-- 로그인 체크 필터입니다 -->
 </web-app>
