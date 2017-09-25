@@ -14,11 +14,13 @@
 	${authUser.name}님, 안녕하세요.
 	<a href="logout.do">[로그아웃하기]</a>
 	<a href="inquiry.jsp">[개인실적조회]</a>
+	<br/>
 	<a href="article/list.do">[게시판가기]</a>
 </u:isLogin>
 <u:notLogin>
 	<a href="join.do">[회원가입하기]</a>
 	<a href="login.do">[로그인하기]</a>
+	<br/>
 	<a href="article/list.do">[게시판가기]</a>
 </u:notLogin>
 <br/>
