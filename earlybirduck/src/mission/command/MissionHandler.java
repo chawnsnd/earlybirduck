@@ -57,8 +57,8 @@ public class MissionHandler implements CommandHandler{
 			} else{ //3번클릭인데
 				if(minutes<40){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";}
 			}
-		}else{
-			if(hours != 7){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";} //8시 그때 아니면 안됨
+		}else{ //평일일때
+			if(hours != 7){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";} //7시 그때 아니면 안됨
 			if(order.equals("1")){ //1번클릭인데
 				if(minutes>20){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";}
 			} else if(order.equals("2")){ //2번클릭인데
