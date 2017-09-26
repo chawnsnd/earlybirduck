@@ -14,7 +14,7 @@ import mvc.command.CommandHandler;
 
 public class MissionHandler implements CommandHandler{
 	
-	private static final String FORM_VIEW = "/WEB-INF/view/mission.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/view/mission/missionPerformance.jsp";
 	private InitService initService = new InitService();
 	private DetailService detailService = new DetailService();
 	
@@ -49,22 +49,22 @@ public class MissionHandler implements CommandHandler{
 		int minutes = now.getMinutes();
 
 		if(week==7 || week==1){ //주말일때
-			if(hours != 8){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";}//8시 그때 아니면 안됨
+			if(hours != 8){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/mission/missionFail.jsp";}//8시 그때 아니면 안됨
 			if(order.equals("1")){ //1번클릭인데
-				if(minutes>20){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";}
+				if(minutes>20){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/mission/missionFail.jsp";}
 			} else if(order.equals("2")){ //2번클릭인데
-				if(minutes<20 || minutes>40){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";}
+				if(minutes<20 || minutes>40){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/mission/missionFail.jsp";}
 			} else{ //3번클릭인데
-				if(minutes<40){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";}
+				if(minutes<40){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/mission/missionFail.jsp";}
 			}
 		}else{ //평일일때
-			if(hours != 7){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";} //7시 그때 아니면 안됨
+			if(hours != 7){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/mission/missionFail.jsp";} //7시 그때 아니면 안됨
 			if(order.equals("1")){ //1번클릭인데
-				if(minutes>20){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";}
+				if(minutes>20){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/mission/missionFail.jsp";}
 			} else if(order.equals("2")){ //2번클릭인데
-				if(minutes<20 || minutes>40){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";}
+				if(minutes<20 || minutes>40){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/mission/missionFail.jsp";}
 			} else{ //3번클릭인데
-				if(minutes<40){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/missionFail.jsp";}
+				if(minutes<40){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/mission/missionFail.jsp";}
 			}
 		}
 		
@@ -74,17 +74,17 @@ public class MissionHandler implements CommandHandler{
 				initService.init(missionInit);
 			}catch(Exception e){
 				e.printStackTrace();
-				return "/WEB-INF/view/missionFail.jsp";
+				return "/WEB-INF/view/mission/missionFail.jsp";
 			}
 		}
 
 		//일반적인 시간저장
 		try{
 			detailService.missionUpdate(missionInit, order);
-			return "/WEB-INF/view/missionSuccess.jsp";
+			return "/WEB-INF/view/mission/missionSuccess.jsp";
 		}catch(Exception e){
 			e.printStackTrace();
-			return "/WEB-INF/view/missionFail.jsp";
+			return "/WEB-INF/view/mission/missionFail.jsp";
 		}
 
 	}
