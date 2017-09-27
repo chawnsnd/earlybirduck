@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import jdbc.JdbcUtil;
 import mission.model.Mission;
+import mission.service.MissionReq;
 
 public class MissionDao {
 
@@ -17,8 +18,11 @@ public class MissionDao {
 		ResultSet rs = null;
 		try{
 			pstmt = conn.prepareStatement(
-					"select * from member where memberid =?");
+					"select * from mission where memberid =? and year=? and month=? and day=?");
 			pstmt.setString(1, id);
+			pstmt.setInt(2, year);
+			pstmt.setInt(3, month);
+			pstmt.setInt(4, day);
 			rs = pstmt.executeQuery();
 			Mission mission = null;
 			if(rs.next()){
@@ -27,9 +31,6 @@ public class MissionDao {
 						rs.getInt("month"),
 						rs.getInt("day"),
 						rs.getString("week"));
-				mission.setFirstMission(rs.getTime("firstmission").toString());
-				mission.setSecondMission(rs.getTime("secondmission").toString());
-				mission.setThirdMission(rs.getTime("thirdmission").toString());
 			}
 			return mission;
 		}finally{

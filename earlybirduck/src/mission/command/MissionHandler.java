@@ -7,16 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import auth.service.User;
-import mission.service.DetailService;
-import mission.service.InitService;
-import mission.service.MissionInit;
+import mission.service.MissionReq;
+import mission.service.MissionService;
+import mission.service.TimeException;
 import mvc.command.CommandHandler;
 
 public class MissionHandler implements CommandHandler{
 	
 	private static final String FORM_VIEW = "/WEB-INF/view/mission/missionPerformance.jsp";
-	private InitService initService = new InitService();
-	private DetailService detailService = new DetailService();
+	private MissionService missionService = new MissionService();
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res){
@@ -35,14 +34,15 @@ public class MissionHandler implements CommandHandler{
 	}
 	
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res){
-		MissionInit missionInit = new MissionInit();
+		MissionReq missionReq = new MissionReq();
 		User user = (User)req.getSession(false).getAttribute("authUser");
 		String id = user.getId();
-		missionInit.setId(id);
+		missionReq.setId(id);
 		String order = req.getParameter("order");
+		missionReq.setOrder(Integer.parseInt(order));
 		
-		//시간 유효성 확인
-		Calendar today = Calendar.getInstance();
+		//시간 유효성 확인 -> 그냥 클라이언트에서 하는걸로 합시다
+/*		Calendar today = Calendar.getInstance();
 		int week = today.get(Calendar.DAY_OF_MONTH);
 		Date now = new Date();
 		int hours = now.getHours();
@@ -67,21 +67,14 @@ public class MissionHandler implements CommandHandler{
 				if(minutes<40){ System.out.println("걸렸다 요놈"); return "/WEB-INF/view/mission/missionFail.jsp";}
 			}
 		}
-		
-		//1번 클릭했을 떄
-		if(order.equals("1")){
-			try{
-				initService.init(missionInit);
-			}catch(Exception e){
-				e.printStackTrace();
-				return "/WEB-INF/view/mission/missionFail.jsp";
-			}
-		}
+		*/
 
-		//일반적인 시간저장
 		try{
-			detailService.missionUpdate(missionInit, order);
+			missionService.performance(missionReq);
 			return "/WEB-INF/view/mission/missionSuccess.jsp";
+		}catch(TimeException e){
+			e.printStackTrace();
+			return "/WEB-INF/view/mission/missionTimeFail.jsp";
 		}catch(Exception e){
 			e.printStackTrace();
 			return "/WEB-INF/view/mission/missionFail.jsp";

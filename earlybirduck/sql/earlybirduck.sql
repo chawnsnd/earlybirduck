@@ -52,7 +52,7 @@ create table article_content (
     content text
 ) engine=InnoDB default character set = utf8;
 
-
+select * from mission where memberid ='chawnsnd';
 
 
 

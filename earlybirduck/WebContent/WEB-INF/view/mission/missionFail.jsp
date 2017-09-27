@@ -27,21 +27,21 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.jsp">EARLYBIRDUCK</a>
+				<a class="navbar-brand" href="/earlybirduck/index.jsp">EARLYBIRDUCK</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="./index.jsp">홈으로</a></li>
-					<li><a href="./introduce.jsp">얼리버덕프로젝트</a></li>
+					<li><a href="/earlybirduck/index.jsp">홈으로</a></li>
+					<li><a href="/earlybirduck/introduce.jsp">얼리버덕프로젝트</a></li>
 					<li class="active"><a href="mission.do">미션수행</a></li>
-					<li><a href="article/list.do">게시판</a></li>
+					<li><a href="/earlybirduck/article/list.do">게시판</a></li>
 					<u:isLogin>
-						<li><a href="record.do">개인실적조회</a></li>
-						<li><a href="logout.do">로그아웃</a></li>
+						<li><a href="/earlybirduck/record.do">개인실적조회</a></li>
+						<li><a href="/earlybirduck/logout.do">로그아웃</a></li>
 					</u:isLogin>
 					<u:notLogin>
-						<li><a href="join.do">회원가입</a></li>
-						<li><a href="login.do">로그인</a></li>
+						<li><a href="/earlybirduck/join.do">회원가입</a></li>
+						<li><a href="/earlybirduck/login.do">로그인</a></li>
 					</u:notLogin>
 				</ul>
 			</div>
@@ -52,16 +52,7 @@
 	<div class="container">
 		<div style="margin-top: 100px;">
 			미션이 실패하였습니다! 다시 시도해주세요ㅠㅠ<br />
-			<br /> 시간대도 다시 확인해주세요<br />
-			<br />
 
-			<h3>평일</h3>
-			1차 : 7시 00분 ~ 7시 20분<br /> 2차 : 7시 21분 ~ 7시 40분<br /> 3차 : 7시 41분 ~
-			7시 59분<br /> <br />
-
-			<h3>주말</h3>
-			1차 : 8시 00분 ~ 8시 20분<br /> 2차 : 8시 21분 ~ 8시 40분<br /> 3차 : 8시 41분 ~
-			8시 59분<br /> <br />
 			<br /> <a href="mission.do">돌아가기</a>
 		</div>
 	</div>

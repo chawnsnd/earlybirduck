@@ -2,7 +2,7 @@ package mission.service;
 
 import java.util.Calendar;
 
-public class MissionInit {
+public class MissionReq {
 	
 	Calendar now = Calendar.getInstance();
 	
@@ -11,7 +11,14 @@ public class MissionInit {
 	private int month = now.get(Calendar.MONTH)+1;
 	private int day = now.get(Calendar.DAY_OF_MONTH);
 	private String week = strWeek(now.get(Calendar.DAY_OF_WEEK));
+	private int order;
 	
+	public int getOrder() {
+		return order;
+	}
+	public void setOrder(int order) {
+		this.order = order;
+	}
 	public String getId() {
 		return id;
 	}
