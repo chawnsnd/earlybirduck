@@ -52,7 +52,14 @@ create table article_content (
     content text
 ) engine=InnoDB default character set = utf8;
 
-select * from mission where memberid ='chawnsnd';
+alter table mission add penalty int;
+alter table mission add chk varchar(5);
+
+select * from mission;
+
+update mission set thirdmission = null where day=24;
+
+update mission set penalty = 2000 where 
 
 
 

@@ -31,7 +31,7 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="./index.jsp">홈으로</a></li>
+					<li class="active"><a href="/earlybirduck/index.jsp">홈으로</a></li>
 					<li><a href="/earlybirduck/introduce.jsp">얼리버덕프로젝트</a></li>
 					<li><a href="/earlybirduck/mission.do">미션수행</a></li>
 					<li><a href="/earlybirduck/article/list.do">게시판</a></li>
