@@ -57,9 +57,23 @@ alter table mission add chk varchar(5);
 
 select * from mission;
 
-update mission set thirdmission = null where day=24;
 
-update mission set penalty = 2000 where 
+create table comment(
+	comment_no int auto_increment primary key,
+	commenter_id varchar(50) not null,
+	commenter_name varchar(50) not null,
+	comment text,
+	regdate datetime not null
+) engine=InnoDB default character set =utf8;
 
+alter table comment add article_no int;
+alter table comment add constraint foreign key(article_no)
+references article(article_no) on delete cascade on update cascade;
+alter table article_content add constraint foreign key(article_no)
+references article(article_no) on delete cascade on update cascade;
 
+insert into comment (comment_no, commenter_id, commenter_name, comment, regdate, article_no) values (1, 'chawnsnd', '가이름','2번글 댓글입니다.',now(), 2);
 
+select * from comment;
+
+select count(*) as count from comment group by article_no = 2

@@ -16,7 +16,7 @@ public class MissionService {
 	
 	public void performance(MissionReq missionReq){
 		Calendar today = Calendar.getInstance();
-		int week = today.get(Calendar.WEEK_OF_MONTH);
+		int week = today.get(Calendar.DAY_OF_WEEK);
 		Date now = new Date();
 		int hours = now.getHours();
 		int minutes = now.getMinutes();
@@ -41,16 +41,15 @@ public class MissionService {
 				missionDao.insert(conn, mission);
 			}
 			
+			System.out.println(week+"week "+hours+"h "+minutes+"m ");
 			//1번시도일 때
 			if(missionReq.getOrder()==1){
 				//시간유효성검사 -> 타임익셉션
 				if(((week==7||week==1)&&(hours!=8||minutes>=20))||
 						((week>=2&&week<=6)&&(hours!=7||minutes>=20))){
-					System.out.println("여기들어가면 실팬데");
 					throw new TimeException();
 				}else{
 					missionDao.firstUpdate(conn, mission);
-					System.out.println(week+" "+hours+" "+minutes);
 				}
 			//2번시도일 떄
 			}else if(missionReq.getOrder()==2){
